@@ -92,7 +92,7 @@ $(document).ready(function () {
             $(".header .leftBlock ul li").removeClass('active');
             $(this).addClass('active');
             openSection = name;
-            History.pushState({section:name}, "section:" + name, "?section="+name);
+            History.pushState({section:name}, name + " | Joost Elfering | d-its.net:Portfiolio", "?section="+name);
         }
     });
 
