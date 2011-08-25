@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="copyright" content="&copy; Yopefonic" />
+        <meta http-equiv="Content-Language" content="nl" />
+        <meta name="distribution" content="global" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="robots" content="index,follow" />
+
+        <meta name="publisher" content="Yopefonic" />
+        <meta name="Designer" content="Joost Elfering" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="a " />
+
+        <title>jQuery plugin: titleControl | d-its.net:Projects</title>
+        
+        <link rel="shortcut icon" href="http://www.d-its.net/favicon.ico">
+        <link href="../../resources/css/base.css" media="all" rel="stylesheet" type="text/css" />
+        <style type="text/css">
+            .linkList {
+                margin: 20px 0px;
+            }
+            .linkList a {
+                float: left;
+                margin: 0px 5px;
+                display: block;
+                padding: 0px 10px;
+                background-color: #9999FF;
+                color: #FFFFFF;
+                text-decoration: none;
+                line-height: 30px;
+                position: relative;
+            }
+            .linkList a:hover {
+                background-color: #6666FF;
+            }
+
+            *:hover > .titleHover {
+                display: block;
+            }
+
+            .titleHover {
+                display: none;
+                position: absolute;
+                background-color: #6666FF;
+                z-index: 20;
+                padding: 0px 5px;
+                white-space: nowrap;
+            }
+
+            .titleHover img {
+                width: 10px;
+                height: 5px;
+                background-image: url(bubble-arrow.png);
+                background-position: center center;
+                top: -5px;
+                left: -5px;
+                position: absolute;
+                z-index: 21;
+            }
+        </style>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="jquery.title.control.js"></script>
+    </head>
+    <body>
+        <div class="canvas">
+            <h1>jQuery plugin: titleControl</h1>
+            <div class="gridRow">
+                <div class="column">
+                    <h2>What?</h2>
+                    <p>A jQuery Plugin to replace the browsers interpretation of the title element. This allows you to control hover animation, speed, style and placement.</p>
+                </div>
+                <div class="column">
+                    <h2>Why?</h2>
+                    <p>If you want more control over the placement, interaction and styling of the title attribute you can use this plugin. Ideally used for buttons and link that need more explenation then just the content.</p>
+                </div>
+                <div class="column">
+                    <h2>How?</h2>
+                    <p>The title attibure of the parced object will be replaced by a configurable tag inside of that object. The title will be removed and CSS and some jQuery magic will take care of styling and placement.</p>
+                </div>
+                <div class="break"></div>
+            </div>
+            <p class="notice">Please note that this plugin is in <em>BETA</em> 0.2 release.</p>
+            <h2>Download</h2>
+            <p>The latest release download can be found on the <a href="http://plugins.jquery.com/project/JQTC">jquery plugin page</a> hosted on plugin.jquery.com</p>
+            <h2>Suport</h2>
+            <p>Currently the plugin has been tested for:</p>
+            <ul>
+                <li>Firefox 3.0+</li>
+                <li>Chrome 5.0+</li>
+                <li>Safari 4.0+</li>
+                <li>Opera 10.0+</li>
+                <li>Internet Explorer 7+ (tested in IE8)</li>
+            </ul>
+            <h2>Demo</h2>
+            <p>Normally an element with a title is rendered by the browser in a certain way. This does not always work as required in all cases.</p>
+            <p>This is what the browser rendering looks like:</p>
+            <div class="linkList">
+                <a href="javascript:alert('bar');" title="a javascript link">foo</a>
+                <a href="http://www.w3c.org/" title="World Wide Web Consortium">W3C</a>
+                <a href="http://yopefonic.d-its.net/" title="Portfolio by Joost Elfering">My portfolio</a>
+                <div class="break"></div>
+            </div>
+            <p>this is what it looks after the plugin is used:</p>
+            <div class="linkList" id="example1">
+                <a href="javascript:alert('bar');" title="a javascript link">foo</a>
+                <a href="http://www.w3c.org/" title="World Wide Web Consortium">W3C</a>
+                <a href="http://yopefonic.d-its.net/" title="Portfolio by Joost Elfering">My portfolio</a>
+                <div class="break"></div>
+            </div>
+            <script type="text/javascript">
+                $("#example1 a").titleControl({
+                    imageUrl: '../../resources/images/transparent.gif'
+                });
+            </script>
+            <p>Note that the titleControl plugin speeded up the interaction to direct showing. It also not clears the described object, the title attibute can fall over the object. Last but not least it is styled so that it matches the origional object, this includes a small image that makes it seem like it is a text bubble.</p>
+            <h3>basic use</h3>
+            <div class="linkList" id="example2">
+                <a href="javascript:alert('bar');" title="a javascript link">foo</a>
+                <a href="http://www.w3c.org/" title="World Wide Web Consortium">W3C</a>
+                <a href="http://yopefonic.d-its.net/" title="Portfolio by Joost Elfering">My portfolio</a>
+                <div class="break"></div>
+            </div>
+            <script type="text/javascript">
+                $("#example2 a").titleControl({
+                    imageUrl: '../../resources/images/transparent.gif'
+                });
+            </script>
+            <p>basic use requires a image to be placed in your domain at /images/transparent.gif. It is called like that because I use a sprite (resuces the amount of images that need to be called thereby reducing traffic load) to place the bubble arrow in its spot.</p>
+            <p>the code should look like:</p>
+            <div class="code">
+                <span class="tag">&lt;script <span class="attibute">type="text/javascript"</span>&gt;</span>
+                <span class="levelDeeper">
+                    <span class="script">$(<span class="attibute">object</span>).titleControl();</span>
+                </span>
+                <span class="tag">&lt;/script&gt;</span>
+            </div>
+            <h3>options</h3>
+            <p>Options can be entered as a hash. Default options are always avaliable but acn be overwitten by the hash elements. Just a list of all the possible options:</p>
+            <dl>
+                <dt>childTag</dt>
+                <dd>this <em>string</em> can be changed into a different kind of tag if needed. default is the &lt;span&gt; tag.</dd>
+                <dt>childClass</dt>
+                <dd>this <em>string</em> is used as the class attibute for the childTag. can be changed for other styling across the page.</dd>
+                <dt>yDistance</dt>
+                <dd><em>integer</em> to set the y distance of the new element to the origional element. can also be a minus number and used to hover things above the origional object. NOTE that that use is a hack and NOT STABLE!</dd>
+                <dt>xDistance</dt>
+                <dd><em>integer</em> to set the x distance offset from the middle of the origional object. currently not very usefull as the horizontal axes are not functional at this point.</dd>
+                <dt>imageInclude</dt>
+                <dd><em>boolean</em> to set if an image is included in the new child. this is used for styling of the bubble image.</dd>
+                <dt>imageUrl</dt>
+                <dd><em>string</em> to set the url of the image that is included.</dd>
+            </dl>
+            <p>The call for the titleControl with a hash included should look something like this.</p>
+            <div class="code">
+                <span class="tag">&lt;script <span class="attibute">type="text/javascript"</span>&gt;</span>
+                <span class="levelDeeper">
+                    <span class="script">
+                        $(<span class="attibute">object</span>).titleControl({
+                        <span class="levelDeeper">
+                            childClass: <span class="attibute">'customClass'</span>,<br/>
+                            imageUrl: <span class="attibute">'../my/image.gif'</span>,<br/>
+                            yDistance: <span class="attibute">20</span><br/>
+                        </span>
+                        });
+                    </span>
+                </span>
+                <span class="tag">&lt;/script&gt;</span>
+            </div>
+            <h2>Getting help</h2>
+            <p>currently I'm looking for people to help development on this plugin. I have not made a large tutorial and not a complete downloadable pack. For now you can look at how this page is made.</p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="copyright" content="&copy; Yopefonic" />
+        <meta http-equiv="Content-Language" content="nl" />
+        <meta name="distribution" content="global" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="robots" content="index,follow" />
+
+        <title>jQuery plugin: titleControl test-page | d-its.net:Projects</title>
+        
+        <link rel="shortcut icon" href="http://www.d-its.net/favicon.ico">
+        <style type="text/css">
+            .linkList1 a {
+                float: right;
+                margin: 0px 5px;
+                display: block;
+                padding: 0px 10px;
+                background-color: #9999FF;
+                color: #FFFFFF;
+                text-decoration: none;
+                line-height: 30px;
+                position: relative;
+            }
+            .linkList1 a:hover {
+                background-color: #6666FF;
+            }
+            .linkList1 .titleHover {
+                background-color: #6666FF;
+            }
+            .linkList2 a {
+                float: left;
+                display: block;
+                padding: 0px 10px;
+                background-color: #66FF66;
+                color: #FFFFFF;
+                text-decoration: none;
+                line-height: 40px;
+                position: relative;
+                border: 1px solid #009900;
+            }
+            .linkList2 a:hover {
+                background-color: #00CC00;
+            }
+            .linkList2 .titleHover {
+                background-color: #00CC00;
+            }
+
+            *:hover > .titleHover {
+                display: block;
+            }
+            .titleHover {
+                display: none;
+                position: absolute;
+                z-index: 20;
+                padding: 0px 5px;
+                white-space: nowrap;
+            }
+            .titleHover img {
+                width: 10px;
+                height: 5px;
+                background-image: url(bubble-arrow.png);
+                background-position: center center;
+                top: -5px;
+                left: -5px;
+                position: absolute;
+                z-index: 21;
+                margin: 0px;
+                padding: 0px;
+                border: 0px;
+            }
+        </style>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="jquery.title.control.js"></script>
+    </head>
+    <body>
+        <div class="linkList1" id="example1" style="width: 100%; display: block;">
+            <a href="javascript:alert('bar');" title="a javascript link">foo</a>
+            <a href="http://www.w3c.org/" title="World Wide Web Consortium website">W3C</a>
+            <a href="http://yopefonic.d-its.net/" title="Portfolio by Joost Elfering">My portfolio</a>
+            <div class="break"></div>
+        </div>
+        <script type="text/javascript">
+            $("#example1 a").titleControl({
+                imageUrl: 'transparent.gif'
+            });
+        </script>
+        <div class="linkList2" id="example2" style="width: 100%; display: block;">
+            <a href="javascript:alert('bar');" title="a javascript link">foo</a>
+            <a href="http://www.w3c.org/" title="World Wide Web Consortium website">W3C</a>
+            <a href="http://yopefonic.d-its.net/" title="Portfolio by Joost Elfering">My portfolio</a>
+            <div class="break"></div>
+        </div>
+        <script type="text/javascript">
+            $("#example2 a").titleControl({
+                yDistance: 2,
+                imageInclude: false
+            });
+        </script>
+    </body>
+</html>
