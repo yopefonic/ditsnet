@@ -1,4 +1,4 @@
-var mouseIsInside = false;
+var mouseIsInside = false, openSection;
 $(document).ready(function () {
     // adjust height on load, resize and change
     $(window).resize(function() {
@@ -91,12 +91,16 @@ $(document).ready(function () {
 
             $(".header .leftBlock ul li").removeClass('active');
             $(this).addClass('active');
+            openSection = name;
+            History.pushState({section:name}, "section:" + name, "?section="+name);
         }
     });
 
-    $(".leftBlock li a").each(function () {
-        if ($(this).attr('name') == openSection) {
-            $(this).click();
+    //make sure that when it is navigated back the
+    History.Adapter.bind(window, 'statechange', function () {
+        var State = History.getState(); // Note: We are using History.getState() instead of event.state
+        if (State.data.section != openSection) {
+            goToSection(State.data.section);
         }
     });
 
@@ -104,4 +108,14 @@ $(document).ready(function () {
         pos = $(this).attr('name') || 400;
         $(this).parents(".frame").animate({scrollTop: pos}, 200);
     });
+
+    goToSection(openSection);
 });
+
+function goToSection(sectionName) {
+    $(".leftBlock li a").each(function () {
+        if ($(this).attr('name') == sectionName) {
+            $(this).click();
+        }
+    });
+}

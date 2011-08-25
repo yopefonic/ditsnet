@@ -1152,12 +1152,22 @@
         </div>
     </body>
 </html>
-<script type="text/javascript" src="resources/js/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/jquery.urlparcer.js"></script>
-<script type="text/javascript" src="resources/js/jquery.footersize.js"></script>
-<script type="text/javascript" src="resources/js/jquery.blocks.js"></script>
-<script type="text/javascript" src="resources/js/fancybox/jquery.fancybox-1.3.1.js"></script>
-<script type="text/javascript">
+<script src="resources/js/jquery.min.js"></script>
+<script>if ( typeof window.JSON === 'undefined' ) { document.write('<script src="resources/js/history-js/json2.js"><\/script>'); }</script>
+<script src="resources/js/history-js/amplify.store.js"></script>
+<script src="resources/js/history-js/history.adapter.jquery.js"></script>
+<script src="resources/js/history-js/history.js"></script>
+<script src="resources/js/history-js/history.html4.js"></script>
+<script>
+    $(document).ready(function () {
+        History = window.History;
+    });
+</script>
+<script src="resources/js/jquery.urlparcer.js"></script>
+<script src="resources/js/jquery.footersize.js"></script>
+<script src="resources/js/jquery.blocks.js"></script>
+<script src="resources/js/fancybox/jquery.fancybox-1.3.1.js"></script>
+<script>
     $(document).ready(function () {
         $("a.linkedImage").fancybox({
             'transitionIn'  : 'elastic',
