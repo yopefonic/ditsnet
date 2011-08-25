@@ -22,8 +22,8 @@ body {
     font-size: 14px;
     height: 100%;
     width: 100%;
-    background-color: #9ba3a6;
-    background-image: url(../images/bg-2010.jpg);
+    background-color: #1e1e1e;
+    background-image: url(../images/bg-2011.jpg);
     background-attachment: fixed;
     background-position: top right;
     background-repeat: no-repeat;
@@ -69,6 +69,16 @@ table {
     clear: both;
 }
 
+::-moz-selection {
+    background: #65bbff;
+    color: #fff;
+    text-shadow: none;
+}
+::selection {
+    background: #65bbff;
+    color: #fff;
+    text-shadow: none; }
+
 /* basic spacer for content */
 
 .canvas {
@@ -106,12 +116,12 @@ table {
     margin: 20px;
     font-size: 11px;
     font-weight: bold;
-    color: #555555;
+    color: #666666;
 }
 
 .header .leftBlock li a {
     display: block;
-    color: #ff8800;
+    color: #65bbff;
     text-decoration: none;
     font-weight: normal;
     font-size: 12px;
@@ -156,10 +166,10 @@ table {
     line-height: 25px;
     width: 600px;
     float: none;
-    color: #555B66;
+    color: #65bbff;
     background-color: transparent;
     margin: 0px;
-    text-shadow: 1px 2px 2px #FFFFFF;
+    text-shadow: 1px 2px 2px #000000;
 }
 
 .header .info .description {
@@ -177,7 +187,7 @@ table {
     bottom: -225px;
     left: -25px;
     z-index: 5;
-    border: 25px solid rgba(255,128,0,0.5);
+    border: 25px solid rgba(101,187,255,0.75);
     -moz-border-radius: 25px 25px 25px 25px;
     -webkit-border-radius: 25px 25px 25px 25px;
     border-radius: 25px 25px 25px 25px;
@@ -188,7 +198,7 @@ table {
     width: 300px;
     margin: 0px 50px 0px 0px;
     text-align: justify;
-    background-color: rgba(155, 163, 166, 0.75);
+    background-color: rgba(30, 30, 30, 0.75);
 }
 
 .header .info .description img {
@@ -206,14 +216,14 @@ table {
 }
 
 .header .info .description p a {
-    color: #FFDD99;
+    color: #65bbff;
     text-decoration: none;
     z-index: 10;
     font-weight: bold;
 }
 
 .header .info .description p a:hover {
-    background-color: rgba(255,128,0,0.5);
+    background-color: rgba(101,187,255,0.5);
     color: #FFFFFF;
     text-decoration: underline;
 }
@@ -244,7 +254,7 @@ table {
     width: 180px;
     color: #FFFFFF;
     padding: 10px;
-    background-color: rgba(48, 48, 48, 0.6);
+    background-color: rgba(30, 30, 30, 0.75);
     font-weight: bold;
 }
 
@@ -292,7 +302,7 @@ table {
     position: relative;
     width: 600px;
     height: 400px;
-    background-color: rgba(100, 107, 125, 0.95);
+    background-color: rgba(51, 95, 129, 0.95);
     color: #FFFFFF;
     overflow-x: hidden;
     overflow-y: hidden;
@@ -327,18 +337,18 @@ table {
     font-size: 35px;
     font-weight: bold;
     text-align: center;
-    color: rgba(0,0,0,0.3);
+    color: #65bbff;
     overflow: hidden;
 }
 
 .advContent .frame .cube a {
-    color: #FFDD99;
+    color: #65bbff;
     text-decoration: none;
     font-weight: bold;
 }
 
 .advContent .frame .cube a:hover {
-    background-color: rgba(255,128,0,0.5);
+    background-color: rgba(101,187,255,0.5);
     color: #FFFFFF;
     text-decoration: underline;
 }
@@ -452,7 +462,7 @@ table {
 }
 
 .footer .leftBlock a:hover {
-    color: #ff8800;
+    color: #65bbff;
 }
 
 .footer .extra {
