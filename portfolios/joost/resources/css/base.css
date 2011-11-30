@@ -298,6 +298,18 @@ table {
     -webkit-box-shadow: 0px 0px 20px #000000;
 }
 
+.advContent .block .detailed .closeDetail {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background: transparent url('../images/close-button.png') no-repeat center center;
+    font-size: 0;
+    height: 20px;
+    width: 20px;
+    z-index: 1;
+}
+
 .advContent .block .detailed .frame {
     position: relative;
     width: 600px;

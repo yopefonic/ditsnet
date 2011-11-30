@@ -47,6 +47,15 @@ $(document).ready(function () {
         }
     });
 
+    // the close button needs to be delayed due to open vs. closing
+    // issues.
+    $(".closeDetail").click(function(){
+        setTimeout(function(){
+            $(".advContent .block .detailed").hide();
+            $(".advContent .block").removeClass('disabled');
+        },200);
+    });
+
     // click the focus frame to close it and open the about block
     $(".header .info .description .openFirstFrame").click(function () {
         $(".about").click();
