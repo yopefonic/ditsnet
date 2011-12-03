@@ -136,6 +136,14 @@
     background-image: url(../images/blocks/design-layout.jpg);
 }
 
+#originalpieces {
+    background-image: url(../images/blocks/design-pieces.jpg);
+}
+
+#photography {
+    background-image: url(../images/blocks/design-photography.jpg);
+}
+
 #designPattern {
     background-image: url(../images/blocks/designpattern.jpg);
 }
