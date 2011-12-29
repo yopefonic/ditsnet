@@ -340,6 +340,11 @@ table {
     text-align: justify;
 }
 
+.advContent .frame .cube ul {
+    margin: 20px;
+    list-style: inside square;
+}
+
 .advContent .frame .cube p.listItem:first-letter {
     float: left;
     display: block;

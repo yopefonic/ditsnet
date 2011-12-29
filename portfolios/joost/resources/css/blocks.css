@@ -72,7 +72,7 @@
     background-image: url(../images/blocks/gaming.jpg);
 }
 
-#snooker {
+#snooker, #snookerScoreBoard {
     background-image: url(../images/blocks/snooker.jpg);
 }
 
@@ -186,6 +186,10 @@
 
 #jquery {
     background-image: url(../images/blocks/programming-jquery.jpg);
+}
+
+#dojoToolkit {
+    background-image: url(../images/blocks/programming-dojotoolkit.jpg);
 }
 
 #php {
