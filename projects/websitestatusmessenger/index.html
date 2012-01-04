@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="copyright" content="&copy; Yopefonic" />
+        <meta http-equiv="Content-Language" content="nl" />
+        <meta name="distribution" content="global" />
+        <meta name="googlebot" content="index,follow" />
+        <meta name="robots" content="index,follow" />
+
+        <meta name="publisher" content="Yopefonic" />
+        <meta name="Designer" content="Joost Elfering" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+
+        <title>websiteStatusMessenger.js | d-its.net:Projects</title>
+        
+        <link rel="shortcut icon" href="http://www.d-its.net/favicon.ico">
+        <link href="../resources/css/base.css" media="all" rel="stylesheet" type="text/css" />
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+        <script defer src="websiteStatusMessenger.js"></script>
+        <script defer src="websiteStatusMessenger.jquery.js"></script>
+
+        <script defer>
+            var statusMessenger;
+
+            jQuery(document).ready(function(){
+                statusMessenger = new WebsiteStatusMessenger();
+
+                jQuery("#example_1").click(function() {
+                    statusMessenger.addMessage("Positive from the top", "positive");
+                });
+                jQuery("#example_2").click(function() {
+                    statusMessenger.addMessage("Negative from the top", "negative");
+                });
+                jQuery("#example_3").click(function() {
+                    statusMessenger.addMessage("Neutral from the top", "neutral");
+                });
+            });
+        </script>
+
+        <style type="text/css">
+            #system_messages {
+                display: none;
+                position: fixed;
+                width: 100%;
+                left: 0px;
+                top: 0px;
+            }
+
+            #system_messages .message {
+                height: 40px;
+                line-height: 40px;
+                position: relative;
+            }
+
+            #system_messages p {
+                margin: 0px;
+                text-align: center;
+            }
+
+            #system_messages a {
+                position: absolute;
+                top: 0px;
+                right: 10px;
+            }
+
+            .message {
+                overflow: hidden;
+                background-color: #CCCCCC;
+            }
+
+            .message.positive {
+                background-color: #99FF99;
+            }
+
+            .message.negative {
+                background-color: #FF9999;
+            }
+
+            .message.neutral {
+                background-color: #FFFF99;
+            }
+
+            ul.examples li {
+                cursor: pointer;
+                color: #0000EE;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="canvas">
+            <h1>websiteStatusMessenger.js</h1>
+            <div class="gridRow">
+                <div class="column">
+                    <h2>What?</h2>
+                    <p>A small JavaScript library to show notifications on a website. Used best for error handling and system confirmations.</p>
+                </div>
+                <div class="column">
+                    <h2>Why?</h2>
+                    <p>Showing a message is trivial. Showing it in a que and applying progressive enhancement is not that trivial.</p>
+                </div>
+                <div class="column">
+                    <h2>How?</h2>
+                    <p>A JavaScript object constructor that allows you to create a messenger object that can be coupled to any action you require.</p>
+                </div>
+                <div class="break"></div>
+            </div>
+            <h2>Download</h2>
+            <p>Currently the only way to get a download is to do a git clone from the <a href="https://github.com/yopefonic/websiteStatusMessenger.js">Github repository</a>.</p>
+            <h2>Support</h2>
+            <p>Currently the plugin has been tested for:</p>
+            <ul>
+                <li>FireFox 7.0+</li>
+                <li>Chrome 14.0+</li>
+                <li>Safari 5.1+</li>
+                <li>Opera 11.6+</li>
+            </ul>
+            <h2>Demo</h2>
+            <p>Use is very easy. Create an object using the constructor and use object.addMessage("message text", "statusCssClass") to add a message to the que. It will start looping the que after adding message. More detailed information about implementation can be found in the readme file in the <a href="https://github.com/yopefonic/websiteStatusMessenger.js">Github repository</a>.</p>
+            <ul class="examples">
+                <li id="example_1">Positive from the top</li>
+                <li id="example_2">Negative from the top</li>
+                <li id="example_3">Neutral from the top</li>
+            </ul>
+            <p class="notice">Please notice this is a do it yourself kit. Basic animation and style are included but are free to your discretion.</p>
+            <h2>Getting help</h2>
+            <p>If you have any comments, suggestions, found any bugs or any a contribution please add them to the <a href="https://github.com/yopefonic/websiteStatusMessenger.js">Github repository</a>.</p>
+        </div>
+    </body>
+</html>
