@@ -232,6 +232,10 @@ header .info aside p em {
   font-weight: bold;
 }
 
+#fork {
+  display: none;
+}
+
 section.content {
   position: relative;
   margin-top: 25px;
@@ -563,6 +567,10 @@ footer a:hover {
   header .info aside {
     padding: 80px;
   }
+
+  #fork {
+    display: inline;
+  }
 }
 
 @media only screen and (min-width: 1500px) {
@@ -622,6 +630,14 @@ footer a:hover {
 
   header nav.detached {
     position: relative;
+  }
+
+  header nav.detached > ul > li {
+    width: auto;
+  }
+
+  header nav.detached li.logo {
+    display: none;
   }
 
   section.content ul {
