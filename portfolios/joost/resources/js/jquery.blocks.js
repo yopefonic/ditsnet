@@ -1,130 +1,138 @@
 var mouseIsInside = false, openSection;
 $(document).ready(function () {
-    // adjust height on load, resize and change
-    $(window).resize(function() {
-        $.footerResize();
-    });
+  // scrolling navigation
+  $(window).scroll(function () {
+    checkNavigationPosition();
+  });
 
-    // open the section selected in the url, if none given the features are selected
-    openSection = $.getUrlVar('section');
-    if (openSection == null) {
-        openSection = 'featured';
+  // open the section selected in the url, if none given the features are selected
+  openSection = $.getUrlVar('section');
+  if (openSection == null) {
+    openSection = 'featured';
+  }
+
+  // click on a block
+  $(".content .block").click(function () {
+    // check of block is already open
+    if ($(this).children(".detailed").css('display') != 'block') {
+      $(".content .block .detailed").hide(200);
+      $(".content .block").addClass('disabled');
     }
 
-    // click on a block
-    $(".advContent .block").click(function () {
-        if ($(this).children(".detailed").css('display') != 'block') {
-            $(".advContent .block .detailed").hide(200);
-            $(".advContent .block").addClass('disabled');
-        }
-        $(this).removeClass('disabled');
-        leftOffset = 0;
-        rightOverflow = $(window).width() - ($(this).offset().left + 600);
-        if (rightOverflow < -200) {
-            $(this).children(".detailed").css('left', '-400px');
-        } else if (rightOverflow < 0) {
-            $(this).children(".detailed").css('left', '-200px');
-        } else {
-            $(this).children(".detailed").css('left', '0px');
-        }
-        $(this).children(".detailed").show(200);
+    // show block as enabled
+    $(this).removeClass('disabled');
 
-        scrollOffset = $(this).offset().top - (($(window).height()-400)/2);
-        $("html,body").animate({scrollTop: scrollOffset}, 300);
-    });
+    // set the offset of the detail of a block
+    determineDetailOffset(this);
 
-    // determine if the user clicks outside the clocks and close
-    // them if this is the case
-    $(".advContent .block").hover(function(){
-        mouseIsInside=true;
-    }, function(){
-        mouseIsInside=false;
-    });
-    $(".canvas").click(function(){
-        if(! mouseIsInside) {
-            $(".advContent .block .detailed").hide();
-            $(".advContent .block").removeClass('disabled');
-        }
-    });
+    // show the detail of a block
+    $(this).children(".detailed").show(200);
 
-    // the close button needs to be delayed due to open vs. closing
-    // issues.
-    $(".closeDetail").click(function(){
-        setTimeout(function(){
-            $(".advContent .block .detailed").hide();
-            $(".advContent .block").removeClass('disabled');
-        },200);
-    });
+    var scrollOffset = $(this).offset().top - 100 - (($(window).height() - 400) / 2);
+    $("html,body").animate({scrollTop:scrollOffset}, 300);
+  });
 
-    // click the focus frame to close it and open the about block
-    $(".header .info .description .openFirstFrame").click(function () {
-        $(".about").click();
-    });
+  // determine if the user clicks outside the clocks and close
+  // them if this is the case
+  $(".content .block").hover(function () {
+    mouseIsInside = true;
+  }, function () {
+    mouseIsInside = false;
+  });
 
-    // hover for the first item opening link
-    $(".header .info .description a.openFirstFrame").hover(
-        function () {
-            if ($(".about").css('display') != 'none') {
-                $(".firstItemFrame").stop(true, true).fadeIn(200);
+  $("body").click(function () {
+    if (!mouseIsInside) {
+      $(".content .block .detailed").hide();
+      $(".content .block").removeClass('disabled');
+    }
+  });
+
+  // the close button needs to be delayed due to open vs. closing issues.
+  $(".closeDetail").click(function () {
+    setTimeout(function () {
+      $(".content .block .detailed").hide();
+      $(".content .block").removeClass('disabled');
+    }, 200);
+  });
+
+  // click on the menu and select a category
+  $("header nav li a").click(function () {
+    var name = $(this).attr('name');
+
+    if (name != 'undefined') {
+      switch (name) {
+        case 'all':
+          $(".content .block").animate({width:'show', opacity: 1}, 400, function () {
+            $(this).attr('style', '');
+          });
+          break;
+        default:
+          $(".content .block").each(function () {
+            if (!$(this).hasClass(name)) {
+              $(this).animate({width: 'hide', opacity: 0}, 400);
             }
-        },
-        function () {
-            $(".firstItemFrame").stop(true, true).fadeOut(200);
-        }
-    );
+          });
+          $(".content .block." + name).animate({width: 'show', opacity: 1}, 400, function () {
+            $(this).attr('style', '');
+          });
+          break;
+      }
 
-    // click on the menu and select a category
-    $(".header .leftBlock ul li").click(function () {
-        name = $(this).children("a").attr('name');
-        
-        if (name != 'undefined') {
-            switch (name) {
-                case 'all':
-                    $(".advContent .block").animate({width: 'show'}, 400, function() {
-                        $.footerResize();
-                    });
-                    break;
-                default:
-                    $(".advContent .block").each(function () {
-                        if (! $(this).hasClass(name)) {
-                            $(this).animate({width: 'hide'}, 400, function() {
-                                $.footerResize();
-                            });
-                        }
-                    });
-                    $(".advContent .block." + name).animate({width: 'show'}, 400, function() {
-                        $.footerResize();
-                    });
-                    break;
-            }
+      $("header nav ul ul li").removeClass('active');
+      $(this).parent().addClass('active');
+      openSection = name;
+      History.pushState({section:name}, name + " | Joost Elfering | d-its.net:Portfiolio", "?section=" + name);
+    }
+  });
 
-            $(".header .leftBlock ul li").removeClass('active');
-            $(this).addClass('active');
-            openSection = name;
-            History.pushState({section:name}, name + " | Joost Elfering | d-its.net:Portfiolio", "?section="+name);
-        }
-    });
+  //make sure that when it is navigated back the
+  History.Adapter.bind(window, 'statechange', function () {
+    var State = History.getState(); // Note: We are using History.getState() instead of event.state
+    if (State.data.section != openSection) {
+      goToSection(State.data.section);
+    }
+  });
 
-    //make sure that when it is navigated back the
-    History.Adapter.bind(window, 'statechange', function () {
-        var State = History.getState(); // Note: We are using History.getState() instead of event.state
-        if (State.data.section != openSection) {
-            goToSection(State.data.section);
-        }
-    });
+  $(".content .scrollLink").click(function () {
+    pos = $(this).attr('name') || 400;
+    $(this).parents(".frame").animate({scrollTop:pos}, 200);
+  });
 
-    $(".advContent .scrollLink").click(function () {
-        pos = $(this).attr('name') || 400;
-        $(this).parents(".frame").animate({scrollTop: pos}, 200);
-    });
-
-    goToSection(openSection);
+  goToSection(openSection);
+  checkNavigationPosition();
 });
 
 function goToSection(sectionName) {
-    $(".leftBlock li a").each(function () {
-        if ($(this).attr('name') == sectionName) {
-            $(this).click();
-        }
-    });
+  $("nav li a").each(function () {
+    if ($(this).attr('name') == sectionName) {
+      $(this).click();
+    }
+  });
+}
+
+function checkNavigationPosition() {
+  var navigationOffset = $('header').height() - $('header nav').height();
+  var scrollOffset = window.pageYOffset;
+
+  if (scrollOffset > navigationOffset) {
+    $('header nav').addClass('detached');
+  } else {
+    $('header nav').removeClass('detached');
+  }
+}
+
+function determineDetailOffset(element) {
+  var rightOverflow = $(window).width() - ($(element).offset().left + 400);
+  var leftOverflow = ($(element).offset().left - 200);
+  if (rightOverflow < -100) {
+    $(element).children(".detailed").css('left', '-400px');
+  } else if (rightOverflow < 0) {
+    $(element).children(".detailed").css('left', '-300px');
+  } else if (leftOverflow < -100) {
+    $(element).children(".detailed").css('left', '0px');
+  } else if (leftOverflow < 0) {
+    $(element).children(".detailed").css('left', '-100px');
+  } else {
+    $(element).children(".detailed").css('left', '-200px');
+  }
 }
