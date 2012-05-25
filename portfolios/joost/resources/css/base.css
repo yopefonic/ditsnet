@@ -138,6 +138,10 @@ header nav > ul > li {
   width: 33%;
 }
 
+header nav li.logo {
+  display: none;
+}
+
 header nav li a {
   display: block;
   color: #ffffff;
@@ -159,6 +163,27 @@ header nav li.active a:hover {
 header nav li a:hover {
   text-decoration: underline;
   color: #65bbff;
+}
+
+header nav.detached {
+  position: fixed;
+  top: 0px;
+  z-index: 20;
+}
+
+header nav.detached > ul > li {
+  width: 30%;
+}
+
+header nav.detached li.logo {
+  display: block;
+  width: 10%;
+}
+
+header nav.detached li.logo img {
+  display: block;
+  height: 60px;
+  margin: 0px auto;
 }
 
 header .info {
@@ -479,6 +504,10 @@ footer a:hover {
   header {
     width: 100%;
   }
+
+  header nav.detached {
+    height: 90px;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
@@ -502,6 +531,10 @@ footer a:hover {
 
   header .info aside {
     padding: 50px;
+  }
+
+  header nav.detached {
+    height: 70px;
   }
 }
 
