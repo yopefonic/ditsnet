@@ -93,8 +93,8 @@ table {
 
 header {
   display: block;
-  height: 300px;
-  width: 100%;
+  height: 200px;
+  width: 750px;
   position: relative;
 }
 
@@ -123,7 +123,8 @@ header nav > ul {
   font-size: 11px;
   font-weight: bold;
   color: #666666;
-  width: 1000px;
+  max-width: 1250px;
+  min-width: 750px;
   height: 50px;
   margin: 0px auto;
 }
@@ -165,13 +166,13 @@ header .info {
 }
 
 header .info hgroup {
-  padding: 50px;
+  padding: 25px;
   float: right;
   overflow: hidden;
 }
 
 header .info hgroup h1 {
-  font-size: 100px;
+  font-size: 60px;
   line-height: 100%;
   color: #65bbff;
 }
@@ -179,20 +180,21 @@ header .info hgroup h1 {
 header .info hgroup h2 {
   display: block;
   font-weight: normal;
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 10px;
+  line-height: 10px;
   color: #444444;
   margin: 0px;
   padding-left: 10px
 }
 
 header .info aside {
-  padding: 50px 50px;
+  padding: 15px;
   text-align: justify;
   color: #aaaaaa;
 }
 
 header .info aside p {
+  max-width: 400px;
 }
 
 header .info aside p a {
@@ -211,6 +213,7 @@ section.content {
 }
 
 section.content ul {
+  width: 750px;
   margin: 0px auto;
 }
 
@@ -473,8 +476,8 @@ footer a:hover {
 /* screen sizes */
 
 @media only screen and (min-width: 750px) {
-  section.content ul {
-    width: 750px;
+  header {
+    width: 100%;
   }
 }
 
@@ -482,11 +485,50 @@ footer a:hover {
   section.content ul {
     width: 1000px;
   }
+
+  header {
+    height: 240px;
+  }
+
+  header .info hgroup h1 {
+    font-size: 80px;
+    line-height: 100%;
+  }
+
+  header .info hgroup h2 {
+    font-size: 14px;
+    line-height: 10px;
+  }
+
+  header .info aside {
+    padding: 50px;
+  }
 }
 
 @media only screen and (min-width: 1250px) {
   section.content ul {
     width: 1250px;
+  }
+
+  header {
+    height: 300px;
+  }
+
+  header .info hgroup {
+    padding: 50px;
+  }
+
+  header .info hgroup h1 {
+    font-size: 100px;
+  }
+
+  header .info hgroup h2 {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+  header .info aside {
+    padding: 80px;
   }
 }
 
