@@ -487,7 +487,7 @@ footer a:hover {
   }
 
   header {
-    height: 240px;
+    height: 235px;
   }
 
   header .info hgroup h1 {
@@ -547,6 +547,52 @@ footer a:hover {
 @media only screen and (min-width: 2000px) {
   section.content ul {
     width: 2000px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  header {
+    height: auto;
+    width: auto;
+  }
+
+  header .info {
+    display: none;
+  }
+
+  header nav {
+    position: relative;
+    height: auto;
+    width: auto;
+    padding: 5px 0px;
+  }
+
+  header nav > ul {
+    float: none;
+    height: auto;
+  }
+
+  header nav li {
+    float: none;
+  }
+
+  header nav > ul > li {
+    display: block;
+    width: auto;
+    padding: 5px 10px;
+    float: none;
+  }
+
+  header nav > ul > li li {
+    display: inline-block;
+  }
+
+  header nav.detached {
+    position: relative;
+  }
+
+  section.content ul {
+    width: auto;
   }
 }
 
