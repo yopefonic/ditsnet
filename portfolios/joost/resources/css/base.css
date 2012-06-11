@@ -506,10 +506,27 @@ footer li {
 footer a {
   color: #444444;
   text-decoration: none;
+  padding-left: 24px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-image: url(../images/contact-icons.png);
 }
 
 footer a:hover {
   color: #65bbff;
+}
+
+#contact-phone a {
+    background-position: 0px 0px;
+}
+#contact-email a {
+    background-position: 0px -20px;
+}
+#contact-twitter a {
+    background-position: 0px -40px;
+}
+#contact-skype a {
+    background-position: 0px -60px;
 }
 
 /* screen sizes */
