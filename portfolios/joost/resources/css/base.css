@@ -256,6 +256,16 @@ section.content .block {
   margin: 25px;
 }
 
+section.content .blockLink {
+  display: block;
+  width: 200px;
+  height: 200px;
+  text-decoration: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
 section.content .block.disabled {
   opacity: 0.4;
   filter: alpha(opacity = 40);

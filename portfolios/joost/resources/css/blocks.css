@@ -231,3 +231,31 @@
 #websiteStatusMessenger {
   background-image: url(../images/blocks/websitemessenger.jpg);
 }
+
+#geeklist {
+  background-image: url(../images/blocks/geeklist-link.jpg);
+}
+
+#about-me {
+  background-image: url(../images/blocks/aboutme-link.jpg);
+}
+
+#linkedin {
+  background-image: url(../images/blocks/linkedin-link.jpg);
+}
+
+#github {
+  background-image: url(../images/blocks/github-link.jpg);
+}
+
+#blog {
+  background-image: url(../images/blocks/blog-link.jpg);
+}
+
+#facebook {
+  background-image: url(../images/blocks/facebook-link.jpg);
+}
+
+#stackoverflow {
+  background-image: url(../images/blocks/stackoverflow-link.jpg);
+}
